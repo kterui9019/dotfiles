@@ -1,0 +1,32 @@
+{
+    "sync.gist": "322052c4b9199d64d7742e8340aa454f",
+    "editor.minimap.enabled": false,
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80
+        ],
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": false
+    },
+    "editor.fontSize": 15,
+    "explorer.confirmDragAndDrop": false,
+    "yaml.schemas": {
+        "file:///Users/kazuki.terui/.vscode/extensions/atlassian.atlascode-2.10.9/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "atlascode.bitbucket.enabled": true,
+    "atlascode.jira.enabled": false,
+    "workbench.colorTheme": "Monokai Pro",
+    "workbench.iconTheme": "Monokai Pro Icons",
+    "dart.enableSdkFormatter": false,
+    "files.autoSave": "afterDelay",
+    "rust-client.rustupPath": "/Users/kazuki.terui/.cargo/bin/rustup",
+    "rust-client.channel": "stable",
+    "redhat.telemetry.enabled": false,
+    "workbench.editor.enablePreview": false,
+    "editor.tabSize": 2
+}

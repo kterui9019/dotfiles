@@ -1,0 +1,85 @@
+{
+    "title": "AnyDesk使用中はcmdをctlにするcopy",
+    "rules":
+    [
+        {
+            "description": "AnyDesk使用中はcmdをctlにするcopy",
+            "manipulators": [
+                {
+                    "conditions": [
+                        {
+                            "bundle_identifiers": [
+                                "^com\\.philandro\\.anydesk"
+                            ],
+                            "type": "frontmost_application_if"
+                        }
+                    ],
+                    "type": "basic",
+                    "from": {
+                        "key_code": "left_command",
+                        "modifiers": {
+                            "optional": [
+                            "any"
+                            ]
+                        }
+                    },
+                    "parameters": {
+                        "basic.to_if_held_down_threshold_milliseconds": 100
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_control",
+                            "lazy": true
+                        }
+                    ],
+                    "to_if_held_down": [
+                        {
+                        "key_code": "left_control"
+                        }
+                    ],
+                    "to_if_alone": [{
+                        "key_code": "f1",
+                        "modifiers": ["left_control"]
+                    }]
+                },
+                {
+                    "conditions": [
+                        {
+                            "bundle_identifiers": [
+                                "^com\\.philandro\\.anydesk"
+                            ],
+                            "type": "frontmost_application_if"
+                        }
+                    ],
+                    "type": "basic",
+                    "from": {
+                        "key_code": "right_command",
+                        "modifiers": {
+                            "optional": [
+                            "any"
+                            ]
+                        }
+                    },
+                    "parameters": {
+                        "basic.to_if_held_down_threshold_milliseconds": 100
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_control",
+                            "lazy": true
+                        }
+                    ],
+                    "to_if_held_down": [
+                        {
+                        "key_code": "right_control"
+                        }
+                    ],
+                    "to_if_alone": [{
+                        "key_code": "f1",
+                        "modifiers": ["left_control"]
+                    }]
+                }
+            ]
+        }
+    ]
+}
