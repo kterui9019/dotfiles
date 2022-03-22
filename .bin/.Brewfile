@@ -15,6 +15,7 @@ brew "the_silver_searcher"
 brew "tig"
 brew "tmux"
 brew "wget"
+brew "lsd"
 
 cask "bitwarden"
 cask "raycast"
@@ -25,3 +26,5 @@ cask "karabiner-elements"
 cask "google-chrome"
 cask "app-cleaner"
 cask "authy"
+
+cask "font-hack-nerd-font"
