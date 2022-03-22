@@ -2,13 +2,22 @@
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-# symlinkでない.configを直接symlinkに書き換えようとするとOSに怒られるので退避
-[[ -e "${HOME}/.config" ]] && [[ ! -L "${HOME}/.config" ]] && mv "${HOME}/.config" "${HOME}/.config.bak"
-
 for dotfile in "${SCRIPT_DIR}"/.??* ; do
     [[ "$dotfile" == "${SCRIPT_DIR}/.git" ]] && continue
     [[ "$dotfile" == "${SCRIPT_DIR}/.github" ]] && continue
     [[ "$dotfile" == "${SCRIPT_DIR}/.DS_Store" ]] && continue
+    # TODO: ln: /Users/$username/.config: Operation not permitted
+    [[ "$dotfile" == "${SCRIPT_DIR}/.config" ]] && continue
+
+    # TODO: ln: /Users/$username/.config/$dirname: Operation not permitted
+    # if [ "$dotfile" == "${SCRIPT_DIR}/.config" ] ; then
+    #     mkdir -p "$HOME/.config"
+    #     for configfile in "${SCRIPT_DIR}"/.config/* ; do
+    #         ln -fnsv "$configfile" "$HOME/.config"
+    #     done
+
+    #     continue
+    # fi
 
     ln -fnsv "$dotfile" "$HOME"
 done
