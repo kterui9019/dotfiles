@@ -25,5 +25,6 @@ cask "deepl"
 cask "karabiner-elements"
 cask "google-chrome"
 cask "authy"
+cask "appcleaner"
 
 cask "font-hack-nerd-font"
