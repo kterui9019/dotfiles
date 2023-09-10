@@ -28,5 +28,12 @@
     "rust-client.channel": "stable",
     "redhat.telemetry.enabled": false,
     "workbench.editor.enablePreview": false,
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "gauge.recommendedSettings.options": "Apply & Reload",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "[python]": {
+        "editor.formatOnType": true
+    }
 }

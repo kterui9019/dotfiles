@@ -18,6 +18,9 @@ defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
+# Character Picker無効化
+defaults write -g ApplePressAndHoldEnabled -bool false
+
 # タップしたときに、クリックとする
 defaults write -g com.apple.mouse.tapBehavior -int 1
 
