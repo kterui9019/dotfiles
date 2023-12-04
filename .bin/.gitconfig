@@ -3,7 +3,7 @@
     name = Kazuki Terui
 
 [alias]
-    s = status
+    st = status
     co = checkout
     cm = commit
 
@@ -18,7 +18,7 @@
 
 [delta]
     features = side-by-side line-numbers decorations
-    syntax-theme = Monokai
+    syntax-theme = Monokai Extended
     plus-style = syntax "#003800"
     minus-style = syntax "#3f0001"
 
