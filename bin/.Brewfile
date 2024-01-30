@@ -1,8 +1,6 @@
 tap "borkdude/brew"
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-fonts"
-tap "homebrew/core"
 
 brew "bitwarden-cli"
 brew "fzf"
@@ -29,5 +27,6 @@ cask "google-chrome"
 cask "authy"
 cask "appcleaner"
 cask "amethyst"
+cask "arc"
 
 cask "font-hack-nerd-font"

@@ -103,3 +103,5 @@ bindkey '^R' buffer-fzf-history
 bindkey '^O' checkout-fzf-gitbranch
 bindkey '^\' ssh-fzf-sshconfig
 
+export PATH=$PATH:/Users/teruikazuki/Library/Android/sdk/platform-tools
+
