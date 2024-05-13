@@ -15,4 +15,4 @@ $ make brew
 ```
 
 ## vim
-https://github.com/rafi/vim-config
+https://www.lunarvim.org/docs/installation

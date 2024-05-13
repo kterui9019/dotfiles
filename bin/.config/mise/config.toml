@@ -1,0 +1,4 @@
+[tools]
+kubectl = "1.30.0"
+istioctl = "1.21.2"
+rust = "1.78.0"

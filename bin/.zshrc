@@ -5,11 +5,12 @@ alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
-
+alias vi='lvim'
+alias gg='lazygit'
 alias tf='terraform'
 alias k='kubectl'
-alias kns='kubens'
-alias kctx='kubectx'
+alias kn='kubie ns'
+alias kx='kubie ctx'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.tmux.zsh ] && source ~/.tmux.zsh
@@ -103,5 +104,8 @@ bindkey '^R' buffer-fzf-history
 bindkey '^O' checkout-fzf-gitbranch
 bindkey '^\' ssh-fzf-sshconfig
 
-export PATH=$PATH:/Users/teruikazuki/Library/Android/sdk/platform-tools
+# for lazygit
+export XDG_CONFIG_HOME="$HOME/.config"
 
+# for mise
+eval "$(/opt/homebrew/bin/mise activate zsh)"
