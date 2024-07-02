@@ -17,6 +17,7 @@ brew "lsd"
 brew "gh"
 brew "ghq"
 brew "lazygit"
+brew "ripgrep"
 
 cask "bitwarden"
 cask "raycast"
