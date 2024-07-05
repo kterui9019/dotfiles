@@ -1,16 +1,32 @@
 #!/bin/bash
 
-if [ "$(uname)" != "Darwin" ] ; then
-	echo "Not macOS!"
-	exit 1
+if [ "$(uname)" -eq "Darwin" ] ; then
+	# Install xcode
+	xcode-select --install > /dev/null
+
+	# Install brew
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" > /dev/null
+
+	if [ ! -e "${HOME}/.ssh" ] ; then
+		ssh-keygen -t rsa -N ''
+	fi
 fi
 
-# Install xcode
-xcode-select --install > /dev/null
+if [ "$(uname)" -eq "Linux" ] ; then
+	apt update
+	apt install -y build-essential procps curl file git 
 
-# Install brew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" > /dev/null
+	# brew
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	(echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> ~/.bashrc
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    brew install gcc
 
-if [ ! -e "${HOME}/.ssh" ] ; then
-	ssh-keygen -t rsa -N ''
+	# code
+	curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+	sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+	sudo sh -c 'echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+	sudo apt update
+	sudo apt install code
 fi
+
