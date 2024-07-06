@@ -25,5 +25,11 @@ if [ "$(uname)" = "Linux" ] ; then
 
 	# code
 	sudo snap install code --classic
+
+	# input-remapper
+	sudo apt install python3-setuptools gettext
+	git clone https://github.com/sezanzeb/input-remapper.git
+	cd input-remapper && ./scripts/build.sh
+	sudo apt install -f ./dist/input-remapper-2.0.1.deb
 fi
 

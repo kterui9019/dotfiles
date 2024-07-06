@@ -1,6 +1,5 @@
 tap "borkdude/brew"
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 
 brew "bitwarden-cli"
 brew "fzf"
@@ -18,6 +17,7 @@ brew "gh"
 brew "ghq"
 brew "lazygit"
 brew "ripgrep"
+brew "mise"
 
 if OS.mac?
   cask "bitwarden"
