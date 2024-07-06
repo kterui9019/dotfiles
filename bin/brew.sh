@@ -1,9 +1,9 @@
 #!/bin/bash
 
-if [ "$(uname)" != "Darwin" ] ; then
-	echo "Not macOS!"
-	exit 1
-fi
+# if [ "$(uname)" != "Darwin" ] ; then
+# 	echo "Not macOS!"
+# 	exit 1
+# fi
 
 ARCH=$(uname -m)
 if [[ $ARCH == arm64 ]]; then
