@@ -1,4 +1,5 @@
 #!/bin/bash
+set -o xtrace
 
 if [ "$(uname)" = "Darwin" ] ; then
 	# Install xcode
