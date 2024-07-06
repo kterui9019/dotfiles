@@ -1,5 +1,5 @@
 [font]
-size = 16.0
+size = 14.0
 
 [font.bold]
 family = "Hack Nerd Font"
@@ -12,3 +12,7 @@ style = "Regular Italic"
 [font.normal]
 family = "Hack Nerd Font"
 style = "Regular"
+
+[shell]
+program = "/usr/bin/zsh"
+args = ["--login"]

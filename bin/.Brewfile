@@ -18,6 +18,7 @@ brew "ghq"
 brew "lazygit"
 brew "ripgrep"
 brew "mise"
+brew "neovim"
 
 if OS.mac?
   cask "bitwarden"

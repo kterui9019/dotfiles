@@ -26,6 +26,17 @@ if [ "$(uname)" = "Linux" ] ; then
 	# code
 	sudo snap install code --classic
 
+	# bitwarden
+	sudo snap install bitwarden
+
+	# docker
+	curl -fsSL https://get.docker.com -o /tmp/get-docker.sh
+	sudo sh /tmp/get-docker.sh
+  
+	# nerd-font
+	git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git /tmp/nerd-fonts
+	sh /tmp/nerd-fonts/install.sh
+
 	# input-remapper
 	# sudo apt install -y python3-setuptools gettext
 	# git clone https://github.com/sezanzeb/input-remapper.git
@@ -48,13 +59,29 @@ if [ "$(uname)" = "Linux" ] ; then
 
 	[Install]
 	WantedBy = multi-user.target
-	EOS
+EOS
 
-	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb	
-	sudo apt install ./google-chrome-stable_current_amd64.deb
+	wget -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb	
+	sudo apt install -y /tmp/google-chrome-stable_current_amd64.deb
 
+	# albert
+	wget -P /tmp https://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_22.04/amd64/albert_0.24.2-0+637.1_amd64.deb
+	sudo apt install -y /tmp/albert_0.24.2-0+637.1_amd64.deb
+
+	# alacritty
+	git clone https://github.com/alacritty/alacritty.git /tmp/alacritty
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+	sudo apt install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev python3
+	cargo build --release --manifest-path /tmp/alacritty/Cargo.toml
+	sudo cp /tmp/alacritty/target/release/alacritty /usr/local/bin
+	sudo cp /tmp/alacritty/extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
+	sudo desktop-file-install /tmp/alacritty/extra/linux/Alacritty.desktop
+	sudo update-desktop-database
+	sudo cp /tmp/alacritty/extra/completions/_alacritty /usr/share/zsh/functions/Completion/
+
+	# xremap
 	SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-    ln -fnsv "$SCRIPT_DIR/xremap" "/usr/local/etc"
-	sudo systemctl daemon-reload && sudo systemctl start xremap && sudo systemctl status xrema
+    sudo ln -fnsv "$SCRIPT_DIR/xremap" "/usr/local/etc"
+	sudo systemctl daemon-reload && sudo systemctl start xremap
 fi
 

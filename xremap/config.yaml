@@ -2,9 +2,10 @@ modmap:
   - name: SandS
     remap:
       Space: [Shift_L, Space]
-  - name: Caps to Ctrl
+  - name: simple remap
     remap:
       CapsLock: LEFTCTRL
+      # Alt_R: SUPER_L
   - name: Shift And Alt
     remap:
       Shift_L: [ALT_L, Shift_L]
@@ -19,3 +20,10 @@ keymap:
     remap:
       M-a: Home
       M-e: End
+  - name: Term Copy and Paste
+    remap:
+      M-c: C-c
+      M-v: C-v
+    application:
+      not: [gnome-terminal-server]
+
