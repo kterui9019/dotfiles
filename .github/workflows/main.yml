@@ -27,5 +27,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      -name: Set Linux.
-      run: make
+      - name: Set Linux.
+        run: make
