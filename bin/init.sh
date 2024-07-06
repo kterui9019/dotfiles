@@ -24,6 +24,6 @@ if [ "$(uname)" = "Linux" ] ; then
     brew install gcc
 
 	# code
-	sudo snap install code
+	sudo snap install code --classic
 fi
 
