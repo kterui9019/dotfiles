@@ -13,8 +13,8 @@ if [ "$(uname)" = "Darwin" ] ; then
 fi
 
 if [ "$(uname)" = "Linux" ] ; then
-	apt update
-	apt install -y build-essential procps curl file git 
+	sudo apt update
+	sudo apt install -y build-essential procps curl file git 
 
 	# brew
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -26,7 +26,6 @@ if [ "$(uname)" = "Linux" ] ; then
 	curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 	sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 	sudo sh -c 'echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-	sudo apt update
 	sudo apt install code
 fi
 
