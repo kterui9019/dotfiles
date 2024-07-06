@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$(uname)" -eq "Darwin" ] ; then
+if [ "$(uname)" = "Darwin" ] ; then
 	# Install xcode
 	xcode-select --install > /dev/null
 
@@ -12,7 +12,7 @@ if [ "$(uname)" -eq "Darwin" ] ; then
 	fi
 fi
 
-if [ "$(uname)" -eq "Linux" ] ; then
+if [ "$(uname)" = "Linux" ] ; then
 	apt update
 	apt install -y build-essential procps curl file git 
 
