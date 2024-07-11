@@ -5,13 +5,12 @@ name: Dotfiles CI
 # Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ master ]
+  - push
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  mac:
     # The type of runner that the job will run on
     runs-on: macos-latest
 
@@ -22,4 +21,10 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Set MacOS.
+        run: make
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set Linux.
         run: make

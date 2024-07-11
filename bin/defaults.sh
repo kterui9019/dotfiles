@@ -2,7 +2,7 @@
 
 if [ "$(uname)" != "Darwin" ] ; then
 	echo "Not macOS!"
-	exit 1
+	exit 0
 fi
 
 # ====================
