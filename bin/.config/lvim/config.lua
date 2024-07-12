@@ -2,6 +2,8 @@
 -- Video Tutorials: https://www.youtube.com/watch?v=sFA9kX-Ud_c&list=PLhoH5vyxr6QqGu0i7tt_XoVK9v-KvZ3m6lualualua
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
+--
+require("user.terminal")
 lvim.plugins = {
 	{
 		"loctvl842/monokai-pro.nvim",
@@ -12,7 +14,6 @@ lvim.plugins = {
 }
 
 lvim.colorscheme = "monokai-pro"
-
 
 -- tab
 lvim.keys.normal_mode["te"] = ":tabedit<Return>"
@@ -36,5 +37,6 @@ lvim.keys.normal_mode["<Tab>"] = ":tabnext<Return>"
 
 -- vim.cmd('autocmd vimenter * :ToggleTerm size=10 direction=horizontal')
 -- vim.cmd('autocmd vimenter * :ToggleTerm 2 size=10 direction=horizontal')
-lvim.keys.normal_mode["tt"] = ":ToggleTerm size=10 direction=horizontal"
-vim.cmd('autocmd vimenter * :NvimTreeToggle')
+-- lvim.keys.normal_mode["tt"] = ":ToggleTerm size=10 direction=horizontal"
+
+-- vim.cmd('autocmd vimenter * :NvimTreeToggle')
