@@ -54,3 +54,61 @@ vim.api.nvim_set_keymap('t', '<C-s>\\', '<C-w>:OpenTerminal vnew<CR>', noremap_o
 vim.api.nvim_set_keymap('t', '<C-s>-', '<C-w>:OpenTerminal<CR>', noremap_options)
 vim.api.nvim_set_keymap('t', '<C-s>^', '<C-w>:OpenTerminal tabnew<CR>', noremap_options)
 
+
+--
+-- function! s:cd_repo(shell, repo) abort
+-- 	exe 'lcd' trim(system('ghq root')) .. '/' .. a:repo
+-- 	call s:open_terminal('new', '', a:shell)
+-- 	exe 'wincmd k'
+-- 	pwd
+-- endfunction
+-- 
+-- function! s:repo(multi, cb) abort
+-- 	if executable('ghq') && exists('*fzf#run()') && executable('fzf')
+-- 		call fzf#run({
+-- 					\ 'source': systemlist('ghq list'),
+-- 					\ 'sink': a:cb,
+-- 					\ 'options': a:multi,
+-- 					\ 'down': '40%'},
+-- 					\ )
+-- 	else
+-- 		echo "doesn't installed ghq or fzf.vim(require fzf)"
+-- 	endif
+-- endfunction
+-- 
+-- command! Repo call s:repo('+m', function('s:cd_repo', [&shell]))
+
+local M = {}
+
+-- Change directory to the selected repository and open a terminal
+function M.cd_repo(shell, repo)
+  local ghq_root = vim.fn.trim(vim.fn.system('ghq root'))
+  vim.cmd('lcd ' .. ghq_root .. '/' .. repo)
+  -- Assuming s:open_terminal is a function to open a terminal, you might need to implement or adjust this part
+  -- M.open_terminal('new', '', shell)
+  vim.cmd('wincmd k')
+  print(vim.fn.getcwd())
+end
+
+-- List repositories using ghq and select one with fzf
+function M.repo(multi, cb)
+  if vim.fn.executable('ghq') == 1 and vim.fn.exists('*fzf#run') == 1 and vim.fn.executable('fzf') == 1 then
+    local fzf = require('fzf')
+    local source = vim.fn.systemlist('ghq list')
+    local sink = function(selected)
+      local repo = selected[1]
+      cb(shell, repo) -- Adjust according to how you plan to use the callback
+    end
+    local options = multi
+    local down = '40%'
+    -- You might need to adjust this part according to how fzf is set up in your Lua configuration
+    -- fzf.run({source = source, sink = sink, options = options, down = down})
+  else
+    print("ghq or fzf.vim (require fzf) isn't installed")
+  end
+end
+
+-- Command to list and select repositories
+vim.api.nvim_create_user_command('Repo', function()
+  M.repo('+m', M.cd_repo)
+end, {})
