@@ -65,8 +65,10 @@ EOS
 	sudo apt install -y /tmp/google-chrome-stable_current_amd64.deb
 
 	# albert
-	wget -P /tmp https://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_22.04/amd64/albert_0.24.2-0+637.1_amd64.deb
-	sudo apt install -y /tmp/albert_0.24.2-0+637.1_amd64.deb
+  echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_22.04/ /' | sudo tee /etc/apt/sources.list.d/home:manuelschneid3r.list
+  curl -fsSL https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_manuelschneid3r.gpg > /dev/null
+  sudo apt update
+  sudo apt install albert
 
 	# alacritty
 	git clone https://github.com/alacritty/alacritty.git /tmp/alacritty
