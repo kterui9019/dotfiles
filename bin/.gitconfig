@@ -2,6 +2,9 @@
     email = pleasure.teru@gmail.com
     name = Kazuki Terui
 
+[push]
+    autoSetupRemote = true
+
 [alias]
     st = status
     co = checkout
