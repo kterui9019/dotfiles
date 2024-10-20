@@ -37,6 +37,9 @@ if [ "$(uname)" = "Linux" ] ; then
 	git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git /tmp/nerd-fonts
 	sh /tmp/nerd-fonts/install.sh
 
+ 	# mozc
+        sudo apt install -y mozc-utils-gui
+
 	# input-remapper
 	# sudo apt install -y python3-setuptools gettext
 	# git clone https://github.com/sezanzeb/input-remapper.git
