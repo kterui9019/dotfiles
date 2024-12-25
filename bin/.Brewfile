@@ -1,7 +1,6 @@
 tap "borkdude/brew"
 tap "homebrew/bundle"
 
-brew "bitwarden-cli"
 brew "fzf"
 brew "git"
 brew "git-delta"
@@ -19,6 +18,7 @@ brew "lazygit"
 brew "ripgrep"
 brew "mise"
 brew "neovim"
+brew "sheldon"
 
 if OS.mac?
   cask "bitwarden"

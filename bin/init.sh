@@ -31,6 +31,7 @@ if [ "$(uname)" = "Linux" ]; then
 
   # bitwarden
   sudo snap install bitwarden
+  sudo snap install bw
 
   # docker
   curl -fsSL https://get.docker.com -o /tmp/get-docker.sh
@@ -70,12 +71,6 @@ EOS
   wget -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   sudo apt install -y /tmp/google-chrome-stable_current_amd64.deb
 
-  # albert
-  echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_22.04/ /' | sudo tee /etc/apt/sources.list.d/home:manuelschneid3r.list
-  curl -fsSL https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_manuelschneid3r.gpg >/dev/null
-  sudo apt update
-  sudo apt install albert
-
   # alacritty
   git clone https://github.com/alacritty/alacritty.git /tmp/alacritty
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -91,6 +86,13 @@ EOS
   SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
   sudo ln -fnsv "$SCRIPT_DIR/xremap" "/usr/local/etc"
   sudo systemctl daemon-reload && sudo systemctl start xremap
+
+  # frameshot(screen shot tool)
+  apt install flameshot
+
+  # ulancher
+  sudo add-apt-repository universe -y && sudo add-apt-repository ppa:agornostal/ulauncher -y && sudo apt update && sudo apt install ulauncher
+
 fi
 
 # lazyvim
