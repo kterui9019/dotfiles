@@ -1,0 +1,2 @@
+git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git /tmp/nerd-fonts
+sh /tmp/nerd-fonts/install.sh

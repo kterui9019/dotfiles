@@ -1,0 +1,79 @@
+{
+    "com.github.kbialek.ulauncher-bitwarden": {
+        "id": "com.github.kbialek.ulauncher-bitwarden",
+        "url": "https://github.com/kbialek/ulauncher-bitwarden",
+        "updated_at": "2024-12-25T17:44:17.877061",
+        "last_commit": "a57acb3394ba2d1aaefc743b5bff819a9eb8d619",
+        "last_commit_time": "2024-05-08T06:35:12"
+    },
+    "com.github.ulauncher.ulauncher-emoji": {
+        "id": "com.github.ulauncher.ulauncher-emoji",
+        "url": "https://github.com/Ulauncher/ulauncher-emoji",
+        "updated_at": "2024-12-25T17:44:21.608125",
+        "last_commit": "827cfe5e1d2f89f742f811f981759787b0654fa9",
+        "last_commit_time": "2023-11-04T18:37:13"
+    },
+    "com.github.mikebarkmin.ulauncher-obsidian": {
+        "id": "com.github.mikebarkmin.ulauncher-obsidian",
+        "url": "https://github.com/mikebarkmin/ulauncher-obsidian",
+        "updated_at": "2024-12-25T17:44:23.221455",
+        "last_commit": "a419cdc5e73453e4b284bb4905448ca60e4a3864",
+        "last_commit_time": "2023-09-12T10:42:25"
+    },
+    "com.github.dhollinger.ulauncher-jira": {
+        "id": "com.github.dhollinger.ulauncher-jira",
+        "url": "https://github.com/dhollinger/ulauncher-jira",
+        "updated_at": "2024-12-25T17:44:26.274317",
+        "last_commit": "5c5d2c15a71bc60b85cce79e3b5f22a7b407faf3",
+        "last_commit_time": "2019-09-23T15:51:47"
+    },
+    "com.github.ceroprogramming.ulauncher-pulsecontrol": {
+        "id": "com.github.ceroprogramming.ulauncher-pulsecontrol",
+        "url": "https://github.com/CeroProgramming/ulauncher-pulsecontrol",
+        "updated_at": "2024-12-25T17:44:28.551978",
+        "last_commit": "241dae0ca39b857a0da2b8ede201ff6d33523849",
+        "last_commit_time": "2024-03-15T14:30:05"
+    },
+    "com.github.gnikolaos.ulauncher-window-manager": {
+        "id": "com.github.gnikolaos.ulauncher-window-manager",
+        "url": "https://github.com/gnikolaos/ulauncher-window-manager/",
+        "updated_at": "2024-12-25T17:44:30.164724",
+        "last_commit": "2d4c206ea9d1f374f159798dfdcf2d4fd0920a18",
+        "last_commit_time": "2024-11-18T15:15:05"
+    },
+    "com.github.tchar.ulauncher-albert-calculate-anything": {
+        "id": "com.github.tchar.ulauncher-albert-calculate-anything",
+        "url": "https://github.com/tchar/ulauncher-albert-calculate-anything",
+        "updated_at": "2024-12-25T17:44:32.360362",
+        "last_commit": "037965a44e6f6f496e7ad71ec1651b9edfcde32d",
+        "last_commit_time": "2024-05-29T21:57:26"
+    },
+    "com.github.friday.ulauncher-clipboard": {
+        "id": "com.github.friday.ulauncher-clipboard",
+        "url": "https://github.com/friday/ulauncher-clipboard",
+        "updated_at": "2024-12-25T17:44:33.945226",
+        "last_commit": "73420cf4816f925321db15379c9c981c8f28c6fe",
+        "last_commit_time": "2022-08-03T20:22:13"
+    },
+    "com.github.iboyperson.ulauncher-system": {
+        "id": "com.github.iboyperson.ulauncher-system",
+        "url": "https://github.com/iboyperson/ulauncher-system",
+        "updated_at": "2024-12-25T17:44:36.099453",
+        "last_commit": "7dedd992709fa2297735cddf852404144d4da47c",
+        "last_commit_time": "2023-11-14T16:53:20"
+    },
+    "com.github.nortmas.chrome-bookmarks": {
+        "id": "com.github.nortmas.chrome-bookmarks",
+        "url": "https://github.com/nortmas/Chrome-bookmarks",
+        "updated_at": "2024-12-25T17:44:37.646277",
+        "last_commit": "b4598ea1e208cd6feb49574e998721dcc771157f",
+        "last_commit_time": "2021-01-09T15:04:28"
+    },
+    "com.github.brpaz.ulauncher-statuspages": {
+        "id": "com.github.brpaz.ulauncher-statuspages",
+        "url": "https://github.com/brpaz/ulauncher-statuspages",
+        "updated_at": "2024-12-25T17:44:39.363476",
+        "last_commit": "41a0bc4b55e97dd9c3fa15ee000b658f92c8029e",
+        "last_commit_time": "2022-06-14T19:01:05"
+    }
+}

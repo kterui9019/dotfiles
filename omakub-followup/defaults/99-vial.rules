@@ -1,0 +1,2 @@
+#Bus 003 Device 012: ID feed:bcad "sekigon-gonnoc" (BMP)torabo-tsuki
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="feed", ATTRS{idProduct}=="bcad", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
