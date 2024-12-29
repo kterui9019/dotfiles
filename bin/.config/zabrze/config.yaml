@@ -1,0 +1,152 @@
+abbrevs:
+  - name: git
+    abbr: g
+    snippet: git
+
+  - name: gb
+    abbr: gb
+    snippet: git branch
+
+  - name: (git) branch
+    abbr: b
+    snippet: branch
+    global: true
+    context: '^git\s'
+
+  - name: gs
+    abbr: gs
+    snippet: git status
+
+  - name: (git) status
+    abbr: st
+    snippet: status
+    global: true
+    context: '^git\s'
+
+  - name: gsw
+    abbr: gsw
+    snippet: git switch B
+
+  - name: (git) switch
+    abbr: sw
+    snippet: switch B
+    global: true
+    context: '^git\s'
+
+  - name: grs
+    abbr: grs
+    snippet: git restore
+
+  - name: (git) restore
+    abbr: res
+    snippet: restore
+    global: true
+    context: '^git\s'
+
+  - name: greb
+    abbr: greb
+    snippet: git rebase
+
+  - name: (git) rebase
+    abbr: reb
+    snippet: rebase
+    global: true
+    context: '^git\s'
+
+  - name: gp
+    abbr: gp
+    snippet: git pull
+
+  - name: (git) pull
+    abbr: p
+    snippet: pull
+    global: true
+    context: '^git\s'
+
+  - name: gP
+    abbr: gP
+    snippet: git push
+
+  - name: (git) push
+    abbr: P
+    snippet: push
+    global: true
+    context: '^git\s'
+
+  - name: (git push) --force-with-lease
+    abbr: f
+    snippet: --force-with-lease
+    global: true
+    context: '^git\spush\s'
+
+  - name: gl
+    abbr: gl
+    snippet: git log --pretty=format:"%C(auto)%h (%C(blue)%cd%C(auto))%d %s %Cblue" --date=format:"%Y/%m/%d %H:%M:%S" -n 10
+
+  - name: gcm
+    abbr: gcm
+    snippet: git commit
+
+  - name: (git) commit
+    abbr: cm
+    snippet: commit
+    global: true
+    context: '^git\s'
+
+  - name: (git commit) -m
+    abbr: m
+    snippet: m '{}'
+    global: true
+    context: '^git\scommit\s'
+
+  - name: (git commit) --amend --no-edit
+    abbr: am
+    snippet: --amend --no-edit
+    global: true
+    context: '^git\scommit\s'
+
+  - name: gco
+    abbr: gco
+    snippet: git checkout
+
+  - name: (git) checkout
+    abbr: co
+    snippet: checkout
+    global: true
+    context: '^git\s'
+
+  - name: d
+    abbr: d
+    snippet: docker
+
+  - name: dc
+    abbr: dc
+    snippet: docker compose
+
+  - name: (docker) compose
+    abbr: c
+    snippet: compose
+    global: true
+    context: '^docker\s'
+
+  - name: (docker) (compose) upd
+    abbr: upd
+    snippet: up -d
+    global: true
+    context: '^docker\scompose\s'
+
+  - name: (docker) (compose) d
+    abbr: d
+    snippet: down
+    global: true
+    context: '^docker\scompose\s'
+
+  - name: (docker) (compose) res
+    abbr: res
+    snippet: down && docker compose up -d
+    global: true
+    context: '^docker\scompose\s'
+
+  - name: awk '{print $1}'
+    abbr: ".1"
+    snippet: awk '{print $1}'
