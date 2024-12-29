@@ -17,4 +17,4 @@ EOS
 # xremap
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 sudo ln -fnsv "${SCRIPT_DIR}/configs/xremap" "/usr/local/etc"
-sudo systemctl daemon-reload && sudo systemctl start xremap
+sudo systemctl daemon-reload && sudo systemctl start xremap && sudo systemctl enable xremap

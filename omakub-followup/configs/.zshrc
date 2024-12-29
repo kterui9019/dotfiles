@@ -36,40 +36,9 @@ alias kn='kubie ns'
 alias kx='kubie ctx'
 alias pbcopy='xsel --clipboard --input'
 
-# for zellij autostart
-ZELLIJ_AUTO_ATTACH=true
-if [[ -z "$ZELLIJ" ]]; then
-    if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
-        zellij attach -c
-    else
-        zellij
-    fi
-
-    if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
-        exit
-    fi
-fi
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.tmux.zsh ] && source ~/.tmux.zsh
 [ -f ~/.gcloud.zsh ] && source ~/.gcloud.zsh
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
-
-cd-fzf-find() {
-    local DIR=$(find ./ -path '*/\.*' -name .git -prune -o -type d -print 2> /dev/null | fzf +m)
-    if [ -n "$DIR" ]; then
-        cd $DIR
-    fi
-}
-alias fd=cd-fzf-find
-
-vim-fzf-find() {
-    local FILE=$(find ./ -path '*/\.*' -name .git -prune -o -type f -print 2> /dev/null | fzf +m)
-    if [ -n "$FILE" ]; then
-        ${EDITOR:-vim} $FILE
-    fi
-}
-alias fc=vim-fzf-find
 
 # Gitリポジトリに移動する(ghq list > cd)
 cd-fzf-ghqlist() {
@@ -82,18 +51,7 @@ cd-fzf-ghqlist() {
 }
 zle -N cd-fzf-ghqlist
 
-# GitリポジトリをCodeで開く(ghq list > code)
-function code-fzf-ghqlist() {
-    local GHQ_ROOT=`ghq root`
-    local REPO=`ghq list -p | sed -e 's;'${GHQ_ROOT}/';;g' |fzf +m`
-    if [ -n "${REPO}" ]; then
-        BUFFER="code ${GHQ_ROOT}/${REPO}"
-    fi
-    zle accept-line
-}
-alias gc=code-fzf-ghqlist
-
-
+# ghq projectをZellij Sessionで開く
 prj () {
     local GHQ_ROOT=`ghq root`
     local repo_path=`ghq list -p | sed -e 's;'${GHQ_ROOT}/';;g' |fzf +m`
@@ -111,7 +69,6 @@ prj () {
   zellij a $session_name --create-background -c options --default-cwd ${GHQ_ROOT}/${repo_path} --default-layout $layout
   zellij pipe --plugin file:~/.config/zellij/plugins/zellij-switch.wasm -- "--session ${session_name}"
 }
-
 
 # Gitブランチを切り替えする(git branch > git checkout)
 function checkout-fzf-gitbranch() {
@@ -173,3 +130,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # for omakub
 export OMAKUB_PATH="/home/$USER/.local/share/omakub"
 alias omakub='bash $OMAKUB_PATH/bin/omakub'
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
