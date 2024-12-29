@@ -13,6 +13,6 @@ style = "Regular Italic"
 family = "Hack Nerd Font"
 style = "Regular"
 
-[shell]
-program = "/usr/bin/zsh"
+[terminal.shell]
+program = "/bin/zsh"
 args = ["--login"]
