@@ -24,9 +24,10 @@ brew "zellij"
 brew "eza"
 brew "bat"
 brew "zabrze"
+brew "obsidian"
 
 if OS.mac?
-  cask "bitwarden"
+  cask "bitwarden-cli"
   cask "raycast"
   cask "alacritty"
   cask "deepl"
