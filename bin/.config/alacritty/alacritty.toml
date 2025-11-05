@@ -1,5 +1,5 @@
 [font]
-size = 14.0
+size = 16.0
 
 [font.bold]
 family = "Hack Nerd Font"
@@ -15,4 +15,7 @@ style = "Regular"
 
 [terminal.shell]
 program = "/bin/zsh"
-args = ["--login"]
+args = ["-l", "-c", "zellij -l welcome"]
+
+[keyboard]
+bindings = [{ key = "Return", mods = "Shift", chars = "\n" }]

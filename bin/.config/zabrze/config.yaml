@@ -10,8 +10,8 @@ abbrevs:
   - name: (git) branch
     abbr: b
     snippet: branch
-    global: true
     context: '^git\s'
+    global: true
 
   - name: gs
     abbr: gs
@@ -20,8 +20,8 @@ abbrevs:
   - name: (git) status
     abbr: st
     snippet: status
-    global: true
     context: '^git\s'
+    global: true
 
   - name: gsw
     abbr: gsw
@@ -30,8 +30,8 @@ abbrevs:
   - name: (git) switch
     abbr: sw
     snippet: switch B
-    global: true
     context: '^git\s'
+    global: true
 
   - name: grs
     abbr: grs
@@ -40,8 +40,8 @@ abbrevs:
   - name: (git) restore
     abbr: res
     snippet: restore
-    global: true
     context: '^git\s'
+    global: true
 
   - name: greb
     abbr: greb
@@ -50,8 +50,8 @@ abbrevs:
   - name: (git) rebase
     abbr: reb
     snippet: rebase
-    global: true
     context: '^git\s'
+    global: true
 
   - name: gp
     abbr: gp
@@ -60,8 +60,8 @@ abbrevs:
   - name: (git) pull
     abbr: p
     snippet: pull
-    global: true
     context: '^git\s'
+    global: true
 
   - name: gP
     abbr: gP
@@ -70,14 +70,14 @@ abbrevs:
   - name: (git) push
     abbr: P
     snippet: push
-    global: true
     context: '^git\s'
+    global: true
 
   - name: (git push) --force-with-lease
     abbr: f
     snippet: --force-with-lease
-    global: true
     context: '^git\spush\s'
+    global: true
 
   - name: gl
     abbr: gl
@@ -85,25 +85,25 @@ abbrevs:
 
   - name: gcm
     abbr: gcm
-    snippet: git commit
+    snippet: git commit -m '{}'
 
   - name: (git) commit
     abbr: cm
     snippet: commit
-    global: true
     context: '^git\s'
+    global: true
 
   - name: (git commit) -m
     abbr: m
-    snippet: m '{}'
-    global: true
+    snippet: -m '{}'
     context: '^git\scommit\s'
+    global: true
 
   - name: (git commit) --amend --no-edit
     abbr: am
     snippet: --amend --no-edit
-    global: true
     context: '^git\scommit\s'
+    global: true
 
   - name: gco
     abbr: gco
@@ -112,8 +112,8 @@ abbrevs:
   - name: (git) checkout
     abbr: co
     snippet: checkout
-    global: true
     context: '^git\s'
+    global: true
 
   - name: d
     abbr: d
@@ -126,27 +126,63 @@ abbrevs:
   - name: (docker) compose
     abbr: c
     snippet: compose
-    global: true
     context: '^docker\s'
-
-  - name: (docker) (compose) upd
-    abbr: upd
-    snippet: up -d
     global: true
+
+  - name: (docker) (compose) up
+    abbr: up
+    snippet: up -d
     context: '^docker\scompose\s'
+    global: true
 
   - name: (docker) (compose) d
     abbr: d
     snippet: down
-    global: true
     context: '^docker\scompose\s'
+    global: true
 
-  - name: (docker) (compose) res
-    abbr: res
+  - name: (docker) (compose) reset
+    abbr: reset
     snippet: down && docker compose up -d
-    global: true
     context: '^docker\scompose\s'
+    global: true
 
   - name: awk '{print $1}'
     abbr: ".1"
     snippet: awk '{print $1}'
+
+  - name: vi
+    abbr: vi
+    snippet: nvim
+
+  - name: less
+    abbr: less
+    snippet: bat --paging always
+
+  - name: ls
+    abbr: ls
+    snippet: eza --icons auto
+
+  - name: ll
+    abbr: ll
+    snippet: eza --icons auto -la
+
+  - name: tf
+    abbr: tf
+    snippet: terraform
+
+  - name: gg
+    abbr: gg
+    snippet: lazygit
+
+  - name: cursor
+    abbr: c
+    snippet: cursor
+
+  - name: claude
+    abbr: cc
+    snippet: claude
+
+  - name: cursor-agent
+    abbr: ca
+    snippet: cursor-agent

@@ -1,15 +1,3 @@
-if command -v starship &> /dev/null; then
-  eval "$(starship init zsh)"
-fi
-
-if command -v mise &> /dev/null; then
-  eval "$(mise activate zsh)"
-fi
-
-if command -v sheldon &> /dev/null; then
-  eval "$(sheldon source)"
-fi
-
 # Compression
 compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }
 alias decompress="tar -xzf"
@@ -20,25 +8,6 @@ webm2mp4() {
   output_file="${input_file%.webm}.mp4"
   ffmpeg -i "$input_file" -c:v libx264 -preset slow -crf 22 -c:a aac -b:a 192k "$output_file"
 }
-
-alias bat='batcat'
-alias less='batcat --paging always'
-alias ls='exa'
-alias ll='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-alias lt='ls --tree'
-alias vi='nvim'
-alias gg='lazygit'
-alias tf='terraform'
-alias k='kubectl'
-alias kn='kubie ns'
-alias kx='kubie ctx'
-alias pbcopy='xsel --clipboard --input'
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.gcloud.zsh ] && source ~/.gcloud.zsh
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 # Gitリポジトリに移動する(ghq list > cd)
 cd-fzf-ghqlist() {
@@ -64,10 +33,30 @@ prj () {
   else 
     local layout="default"
   fi
-  local session_name=$(echo "$(basename $(dirname $repo_path))/$(basename $repo_path)" | sed -e 's/\.\|\//_/g')
+  # 元の文字列を生成
+  local _raw_name="$(basename "$(dirname "$repo_path")")/$(basename "$repo_path")"
+  # 置換（ . | / → _ ）
+  local _sanitized="${_raw_name//[.|\/]/_}"
+  # 先頭 36 文字だけ取り出す
+  local session_name="${_sanitized:0:36}"
 
-  zellij a $session_name --create-background -c options --default-cwd ${GHQ_ROOT}/${repo_path} --default-layout $layout
-  zellij pipe --plugin file:~/.config/zellij/plugins/zellij-switch.wasm -- "--session ${session_name}"
+  echo cwd: ${GHQ_ROOT}/${repo_path}
+  echo session-name: ${session_name}
+  # ── 同名セッションが無ければバックグラウンド生成
+  if ! zellij list-sessions --no-formatting | grep -qx "$session_name"; then
+    echo 1
+    zellij attach "$session_name" --create-background \
+      options --default-cwd ${GHQ_ROOT}/${repo_path} --default-layout $layout
+  fi
+
+  # Zellij 内ならプラグインに切替メッセージを送る
+  if [[ -n $ZELLIJ ]]; then
+    zellij pipe --plugin "https://github.com/mostafaqanbaryan/zellij-switch/releases/download/0.2.1/zellij-switch.wasm" -- "--session $session_name"
+  else
+    zellij attach "$session_name" -c \
+      options --default-cwd ${GHQ_ROOT}/${repo_path} --default-layout $layout
+  fi
+
 }
 
 # Gitブランチを切り替えする(git branch > git checkout)
@@ -82,18 +71,6 @@ zle -N checkout-fzf-gitbranch
 
 # Gitブランチ指定を楽にする
 alias -g B='`git branch --all | grep -v HEAD | fzf -m | sed "s/.* //" | sed "s#remotes/[^/]*/##"`'
-
-# コマンド履歴(history > コマンドラインバッファー)
-function buffer-fzf-history() {
-    local HISTORY=$(history -n -r 1 | fzf +m)
-    BUFFER=$HISTORY
-    if [ -n "$HISTORY" ]; then
-        CURSOR=$#BUFFER
-    else
-        zle accept-line
-    fi
-}
-zle -N buffer-fzf-history
 
 # 登録サーバにSSH(cat ~/.ssh/config > ssh)
 function ssh-fzf-sshconfig() {
@@ -114,7 +91,6 @@ function ssh-fzf-sshconfig() {
 zle -N ssh-fzf-sshconfig
 
 bindkey '^G' cd-fzf-ghqlist
-bindkey '^R' buffer-fzf-history
 bindkey '^O' checkout-fzf-gitbranch
 bindkey '^\' ssh-fzf-sshconfig
 
@@ -127,21 +103,31 @@ eval "$(pyenv init -)"
 # for lazygit
 export XDG_CONFIG_HOME="$HOME/.config"
 
-# for omakub
-export OMAKUB_PATH="/home/$USER/.local/share/omakub"
-alias omakub='bash $OMAKUB_PATH/bin/omakub'
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-. "$HOME/.atuin/bin/env"
+if command -v starship &> /dev/null; then
+  eval "$(starship init zsh)"
+fi
 
-eval "$(atuin init zsh --disable-up-arrow)"
+if command -v mise &> /dev/null; then
+  eval "$(mise activate zsh)"
+fi
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/terui-k/google-cloud-sdk/path.zsh.inc' ]; then . '/home/terui-k/google-cloud-sdk/path.zsh.inc'; fi
+if command -v sheldon &> /dev/null; then
+  eval "$(sheldon source)"
+fi
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/terui-k/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/terui-k/google-cloud-sdk/completion.zsh.inc'; fi
+if command -v atuin &> /dev/null; then
+  eval "$(atuin init zsh --disable-up-arrow)"
+fi
 
-# for direnv
-eval "$(direnv hook zsh)"
+if command -v zabrze &> /dev/null; then
+  eval "$(zabrze init --bind-keys)"
+fi
 
-eval "$(zabrze init --bind-keys)"
+# vscode shell integration manual install
+[[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
+
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+export PATH="$HOME/.local/bin:$PATH"

@@ -12,6 +12,13 @@
 
 shell = "zsh"
 
+#[plugins.enhancd]
+#github = "babarot/enhancd"
+#use = ['init.sh']
+
+[plugins.fzf-tab]
+github = 'Aloxaf/fzf-tab'
+
 [plugins.zsh-autosuggestions]
 github = 'zsh-users/zsh-autosuggestions'
 use = ['{{ name }}.zsh']
@@ -21,13 +28,6 @@ github = 'zsh-users/zsh-syntax-highlighting'
 
 [plugins.zsh-completions]
 github = 'zsh-users/zsh-completions'
-
-[plugins.fzf-tab]
-github = 'Aloxaf/fzf-tab'
-
-[plugins.enhancd]
-github = "b4b4r07/enhancd"
-use = ['init.sh']
 
 [plugins.zsh-gx]
 github = "kterui9019/zsh-gx"

@@ -2,3 +2,22 @@ git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
+
+customCommands:
+  - command: git cz
+    context: files
+    subprocess: true
+    key: C
+  - command: gh
+    context: files
+    subprocess: true
+    key: G
+
+gui:
+  language: "ja"
+  showIcons: true
+
+os:
+  # this will edit the file in the current neovim sesh
+  # edit: "nvr -cc vsplit --remote-wait +'set bufhidden=wipe' {{filename}}"
+  editPreset: "nvim-remote"

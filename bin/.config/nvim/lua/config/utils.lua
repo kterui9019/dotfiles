@@ -1,0 +1,118 @@
+local uv = vim.loop
+local path_sep = "/"
+
+local M = {}
+
+--- assert that the given argument is in fact of the correct type.
+---
+--- Thanks!!
+--- https://github.com/lunarmodules/Penlight
+---
+-- @param n argument index
+-- @param val the value
+-- @param tp the type
+-- @param verify an optional verification function
+-- @param msg an optional custom message
+-- @param lev optional stack position for trace, default 2
+-- @return the validated value
+-- @raise if `val` is not the correct type
+-- @usage
+-- local param1 = assert_arg(1,"hello",'table')  --> error: argument 1 expected a 'table', got a 'string'
+-- local param4 = assert_arg(4,'!@#$%^&*','string',path.isdir,'not a directory')
+--      --> error: argument 4: '!@#$%^&*' not a directory
+function M.assert_arg(n, val, tp, verify, msg, lev)
+  if type(val) ~= tp then
+    error(("argument %d expected a '%s', got a '%s'"):format(n, tp, type(val)), lev or 2)
+  end
+  if verify and not verify(val) then
+    error(("argument %d: '%s' %s"):format(n, val, msg), lev or 2)
+  end
+  return val
+end
+
+--- Thanks!!
+--- https://github.com/lunarmodules/Penlight
+local function assert_string(n, s)
+  M.assert_arg(n, s, "string")
+end
+
+--- Check if a plugin is defined in lazy. Useful with lazy loading when a plugin is not necessarily loaded yet
+---@param plugin string # The plugin to search for
+---@return boolean available # Whether the plugin is available
+function M.is_available(plugin)
+  local lazy_config_avail, lazy_config = pcall(require, "lazy.core.config")
+  return lazy_config_avail and lazy_config.plugins[plugin] ~= nil
+end
+
+--- Call function if a condition is met
+---@param func function # The function to run
+---@param condition boolean # Wether to run the function or not
+---@return any|nil result # The result of the function running or nil
+function M.conditional_func(func, condition, ...)
+  if condition and type(func) == "function" then
+    return func(...)
+  end
+end
+
+--- Check if a list of strings has a value
+--- @param options string[] # The list of strings to check
+--- @param val string # The value to check
+function M.has_value(options, val)
+  for _, value in ipairs(options) do
+    if value == val then
+      return true
+    end
+  end
+
+  return false
+end
+
+--- Checks whether a given path exists and is a directory
+--- Thanks LunarVim!
+--@param path (string) path to check
+--@returns (bool)
+function M.is_directory(path)
+  local stat = uv.fs_stat(path)
+  return stat and stat.type == "directory" or false
+end
+
+--- Thanks LunarVim!
+---Join path segments that were passed as input
+---@return string
+function M.join_paths(...)
+  local result = table.concat({ ... }, path_sep)
+  return result
+end
+
+local ellipsis = "..."
+local n_ellipsis = #ellipsis
+
+--- Return a shortened version of a string.
+--- Fits string within w characters. Removed characters are marked with ellipsis.
+---
+--- Thanks!!
+--- https://github.com/lunarmodules/Penlight
+---
+-- @string s the string
+-- @int w the maxinum size allowed
+-- @bool tail true if we want to show the end of the string (head otherwise)
+-- @usage ('1234567890'):shorten(8) == '12345...'
+-- @usage ('1234567890'):shorten(8, true) == '...67890'
+-- @usage ('1234567890'):shorten(20) == '1234567890'
+function M.shorten(s, w, tail)
+  assert_string(1, s)
+  if #s > w then
+    if w < n_ellipsis then
+      return ellipsis:sub(1, w)
+    end
+    if tail then
+      local i = #s - w + 1 + n_ellipsis
+      return ellipsis .. s:sub(i)
+    else
+      return s:sub(1, w - n_ellipsis) .. ellipsis
+    end
+  end
+  return s
+end
+
+return M
