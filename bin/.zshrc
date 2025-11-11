@@ -1,3 +1,6 @@
+autoload -Uz compinit
+compinit
+
 # Compression
 compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }
 alias decompress="tar -xzf"
@@ -93,12 +96,6 @@ zle -N ssh-fzf-sshconfig
 bindkey '^G' cd-fzf-ghqlist
 bindkey '^O' checkout-fzf-gitbranch
 bindkey '^\' ssh-fzf-sshconfig
-
-# for pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-#eval "$(pyenv virtualenv-init -)"
 
 # for lazygit
 export XDG_CONFIG_HOME="$HOME/.config"
