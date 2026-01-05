@@ -23,7 +23,7 @@ brew "atuin"
 brew "zellij"
 brew "eza"
 brew "bat"
-brew "zabrze"
+brew "ryooooooga/tap/zabrze"
 
 if OS.mac?
   cask "bitwarden"
@@ -36,5 +36,6 @@ if OS.mac?
   cask "arc"
   cask "visual-studio-code"
   cask "font-hack-nerd-font"
+  cask "google-japanese-ime"
 end
 
