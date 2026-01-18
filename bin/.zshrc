@@ -1,6 +1,11 @@
 autoload -Uz compinit
 compinit
 
+# Linuxbrew PATH設定
+if [ "$(uname)" = "Linux" ] && [ -d "/home/linuxbrew/.linuxbrew" ]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 # Compression
 compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }
 alias decompress="tar -xzf"
